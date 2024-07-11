@@ -1,3 +1,4 @@
+import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 import { FaCartShopping, FaRegMoon } from "react-icons/fa6";
@@ -15,6 +16,10 @@ const Header = async () => {
     const date = new Date().getTime()
     console.log(date);
     // console.log(data);
+    const ck = cookies()
+    const theme = ck.get("theme")
+    console.log(theme);
+
     return (
         <div className="p-3 container flex items-center">
             <p className="">{date}</p>
