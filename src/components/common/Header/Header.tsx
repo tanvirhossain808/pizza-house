@@ -1,4 +1,4 @@
-import { cookies } from "next/headers";
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { FaCartShopping, FaRegMoon } from "react-icons/fa6";
@@ -6,23 +6,25 @@ import { GrUserAdmin } from "react-icons/gr";
 import { MdLogout, MdOutlineWbSunny } from "react-icons/md";
 
 
-const Header = async () => {
-    const getData = async () => {
-        const data = await fetch("https://jsonplaceholder.typicode.com/posts")
-        return data
+const Header = () => {
+    const accessKey = '9BJDMw1oGS6IpMlfQmbQx-3891_MYxaz0LLBDxI50uo';
+    const fs = async () => {
+        fetch('https://api.pexels.com/v1/search?query=pizza&per_page=10', {
+            headers: {
+                'Authorization': "s8JxV3UVPVx3YH77EP49LX4SfxAfTwgyicYo38UPF0q4ABMsijoUoS8F"
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            }
+            )
 
     }
-    const data = await getData()
-    const date = new Date().getTime()
-    console.log(date);
-    // console.log(data);
-    const ck = cookies()
-    const theme = ck.get("theme")
-    console.log(theme);
-
+    fs()
+    console.log("object");
     return (
         <div className="p-3 container flex items-center">
-            <p className="">{date}</p>
             <Link href={"/"} className="flex title-font font-extrabold items-center uppercase text-gray-100">
                 <Image src="/Pizza.svg" width={60} height={60} alt="logo" />
                 <p className="text-xl">Pizza House</p>
