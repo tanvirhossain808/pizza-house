@@ -4,9 +4,20 @@ import { FaCartShopping, FaRegMoon } from "react-icons/fa6";
 import { GrUserAdmin } from "react-icons/gr";
 import { MdLogout, MdOutlineWbSunny } from "react-icons/md";
 
-const Header = () => {
+
+const Header = async () => {
+    const getData = async () => {
+        const data = await fetch("https://jsonplaceholder.typicode.com/posts")
+        return data
+
+    }
+    const data = await getData()
+    const date = new Date().getTime()
+    console.log(date);
+    // console.log(data);
     return (
         <div className="p-3 container flex items-center">
+            <p className="">{date}</p>
             <Link href={"/"} className="flex title-font font-extrabold items-center uppercase text-gray-100">
                 <Image src="/Pizza.svg" width={60} height={60} alt="logo" />
                 <p className="text-xl">Pizza House</p>
